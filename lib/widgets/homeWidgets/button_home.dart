@@ -4,8 +4,9 @@ import 'package:flutter/material.dart';
 
 class ButtonHome extends StatelessWidget {
   final String message;
+  final StatefulWidget page;
 
-  const ButtonHome({Key? key, required this.message}) : super(key: key);
+  const ButtonHome({Key? key, required this.message, required this.page}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,10 +18,12 @@ class ButtonHome extends StatelessWidget {
       width: buttonWidth,
       height: buttonHeight,
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) => page));
+        },
         child: Text(
           message,
-          style: TextStyles.buttonStyle, // İsteğe bağlı olarak metin boyutunu ayarlayabilirsiniz
+          style: TextStyles.buttonStyle,
         ),
         style: ButtonStyles.buttonType,
       ),
