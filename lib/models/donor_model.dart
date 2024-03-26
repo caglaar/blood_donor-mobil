@@ -26,6 +26,32 @@ class DonorModel extends UserModel {
           gender: gender,
         );
 
+  DonorModel copyWith({
+    int? userId,
+    String? mail,
+    String? name,
+    String? surname,
+    String? birthDate,
+    String? phoneNumber,
+    String? password,
+    String? gender,
+    String? bloodGroup,
+    int? donorId,
+  }) {
+    return DonorModel(
+      userId: userId ?? this.userId,
+      mail: mail ?? this.mail,
+      name: name ?? this.name,
+      surname: surname ?? this.surname,
+      birthDate: birthDate ?? this.birthDate,
+      phoneNumber: phoneNumber ?? this.phoneNumber,
+      password: password ?? this.password,
+      gender: gender ?? this.gender,
+      bloodGroup: bloodGroup ?? this.bloodGroup,
+      donorId: donorId ?? this.donorId,
+    );
+  }
+
   static DonorModel getEmptyClass() {
     return DonorModel(
       userId: 0,
@@ -36,10 +62,11 @@ class DonorModel extends UserModel {
       phoneNumber: "",
       password: "",
       gender: "",
-      bloodGroup: "", 
-      donorId: 0, 
+      bloodGroup: "",
+      donorId: 0,
     );
   }
+
   @override
   String toString() {
     // TODO: implement toString
