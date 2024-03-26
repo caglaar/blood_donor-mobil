@@ -2,6 +2,7 @@ import 'package:e_blood_donor/providers/register_provider.dart';
 import 'package:e_blood_donor/widgets/homeWidgets/form_register_v2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:provider/provider.dart';
 
 class DonorRegisterPage extends StatelessWidget {
@@ -53,6 +54,10 @@ class DonorRegisterPage extends StatelessWidget {
                         initialValue: registerProvider.donor.mail,
                         keyValue: 'mail',
                         hintText: 'Mail',
+                         validator: FormBuilderValidators.compose([
+                          FormBuilderValidators.required(),
+                          FormBuilderValidators.email(),
+                        ]), 
                       ),
                       const SizedBox(
                         height: 4,
@@ -103,7 +108,7 @@ class DonorRegisterPage extends StatelessWidget {
                         child: ElevatedButton(
                           onPressed: () {
                             if (registerProvider.formKey.currentState!
-                                .validate()) {
+                                .saveAndValidate()) {
                               print(
                                   "Donor before update: ${registerProvider.donor.toString()}");
                               registerProvider.formKey.currentState!.save();
