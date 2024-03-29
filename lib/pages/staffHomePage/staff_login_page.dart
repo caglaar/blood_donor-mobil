@@ -1,3 +1,4 @@
+import 'package:e_blood_donor/const/colorConst.dart';
 import 'package:flutter/material.dart';
 
 class StaffLoginPage extends StatefulWidget {
@@ -24,6 +25,7 @@ class _StaffLoginPageState extends State<StaffLoginPage> {
         ),
         centerTitle: true,
         toolbarHeight: 100,
+        backgroundColor: ColorStyles.appBarBackgroundColor,
       ),
       body: Center(
         child: Padding(

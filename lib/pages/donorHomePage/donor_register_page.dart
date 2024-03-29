@@ -1,9 +1,11 @@
+import 'package:e_blood_donor/const/colorConst.dart';
 import 'package:e_blood_donor/providers/register_provider.dart';
-import 'package:e_blood_donor/widgets/homeWidgets/form_register_v2.dart';
+import 'package:e_blood_donor/widgets/homeWidgets/form_register.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:provider/provider.dart';
+import '';
 
 class DonorRegisterPage extends StatelessWidget {
   const DonorRegisterPage({Key? key}) : super(key: key);
@@ -18,6 +20,7 @@ class DonorRegisterPage extends StatelessWidget {
         ),
         centerTitle: true,
         toolbarHeight: 100,
+        backgroundColor: ColorStyles.appBarBackgroundColor,
       ),
       body: Center(
         child: Padding(
@@ -34,7 +37,7 @@ class DonorRegisterPage extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      FormRegisterV2(
+                      FormRegister(
                         initialValue: registerProvider.donor.name,
                         keyValue: 'name',
                         hintText: 'Name',
@@ -42,7 +45,7 @@ class DonorRegisterPage extends StatelessWidget {
                       const SizedBox(
                         height: 4,
                       ),
-                      FormRegisterV2(
+                      FormRegister(
                         initialValue: registerProvider.donor.surname,
                         keyValue: 'surname',
                         hintText: 'Surname',
@@ -50,7 +53,7 @@ class DonorRegisterPage extends StatelessWidget {
                       const SizedBox(
                         height: 4,
                       ),
-                      FormRegisterV2(
+                      FormRegister(
                         initialValue: registerProvider.donor.mail,
                         keyValue: 'mail',
                         hintText: 'Mail',
@@ -62,7 +65,7 @@ class DonorRegisterPage extends StatelessWidget {
                       const SizedBox(
                         height: 4,
                       ),
-                      FormRegisterV2(
+                      FormRegister(
                         initialValue: registerProvider.donor.password,
                         keyValue: 'password',
                         hintText: 'Password',
@@ -70,7 +73,7 @@ class DonorRegisterPage extends StatelessWidget {
                       const SizedBox(
                         height: 4,
                       ),
-                      FormRegisterV2(
+                      FormRegister(
                         initialValue: registerProvider.donor.gender,
                         keyValue: 'gender',
                         hintText: 'Gender',
@@ -78,7 +81,7 @@ class DonorRegisterPage extends StatelessWidget {
                       const SizedBox(
                         height: 4,
                       ),
-                      FormRegisterV2(
+                      FormRegister(
                         initialValue: registerProvider.donor.birthDate,
                         keyValue: 'birthDate',
                         hintText: 'Birth Date',
@@ -86,7 +89,7 @@ class DonorRegisterPage extends StatelessWidget {
                       const SizedBox(
                         height: 4,
                       ),
-                      FormRegisterV2(
+                      FormRegister(
                         initialValue: registerProvider.donor.phoneNumber,
                         keyValue: 'phoneNumber',
                         hintText: 'Phone Number',
@@ -94,7 +97,7 @@ class DonorRegisterPage extends StatelessWidget {
                       const SizedBox(
                         height: 4,
                       ),
-                      FormRegisterV2(
+                      FormRegister(
                         initialValue: registerProvider.donor.bloodGroup,
                         keyValue: 'bloodGroup',
                         hintText: 'Blood Group',
@@ -102,15 +105,12 @@ class DonorRegisterPage extends StatelessWidget {
                       const SizedBox(
                         height: 4,
                       ),
-                      // Diğer MyTextFormWidget'ları buraya ekleyin
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 16.0),
                         child: ElevatedButton(
                           onPressed: () {
                             if (registerProvider.formKey.currentState!
                                 .saveAndValidate()) {
-                              print(
-                                  "Donor before update: ${registerProvider.donor.toString()}");
                               registerProvider.formKey.currentState!.save();
                               registerProvider.donor =
                                   registerProvider.donor.copyWith(
@@ -131,8 +131,7 @@ class DonorRegisterPage extends StatelessWidget {
                                 bloodGroup: registerProvider
                                     .formKey.currentState!.value['bloodGroup'],
                               );
-                              print(
-                                  "Donor after update: ${registerProvider.donor.toString()}");
+                              print("Donor after update: ${registerProvider.donor.toString()}");
                             }
                           },
                           child: const Text('Register'),

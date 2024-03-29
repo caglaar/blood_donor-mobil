@@ -1,30 +1,43 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_form_builder/flutter_form_builder.dart';
 
-class MyTextFormWidget extends StatelessWidget {
-  const MyTextFormWidget({
-    Key? key,
-    required this.str,
-    required this.name,
-  }) : super(key: key);
-
-  final ValueChanged<String> str;
-  final String name;
+class FormRegister extends StatelessWidget {
+  final String? initialValue;
+  final String? keyValue;
+  final String hintText;
+  final String? Function(String?)? validator;
+  const FormRegister(
+      {super.key,
+      this.initialValue,
+      this.keyValue,
+      required this.hintText,
+      this.validator});
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
+    return FormBuilderTextField(
+      /* key: _emailFieldKey, */
+      name: keyValue ?? 'email',
+      initialValue: initialValue,
       decoration: InputDecoration(
-        hintText: 'Enter your $name',
+        filled: true,
+        fillColor: Colors.white,
+        contentPadding:
+            const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+        enabledBorder: const OutlineInputBorder(
+            borderSide: BorderSide.none,
+            borderRadius: BorderRadius.all(Radius.circular(10))),
+        focusedBorder: const OutlineInputBorder(
+            borderSide: BorderSide(width: 1, color: Colors.blue),
+            borderRadius: BorderRadius.all(Radius.circular(10))),
+        hintText: hintText,
+        hintStyle: Theme.of(context).textTheme.bodyMedium,
       ),
-      validator: (String? value) {
-        if (value == null || value.isEmpty) {
-          return 'Please enter some text';
-        } else {
-          str(value);
-          print(value);
-        }
-        return null;
-      },
+      validator: validator,
+      /* validator: FormBuilderValidators.compose([
+        FormBuilderValidators.required(),
+        FormBuilderValidators.email(),
+      ]), */
     );
   }
 }

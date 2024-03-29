@@ -1,11 +1,11 @@
-import 'package:e_blood_donor/models/user_model.dart';
+import 'package:e_blood_donor/models/user_models/user_model.dart';
 
 class DonorModel extends UserModel {
-  late int donorId;
+  late String donorId;
   late String bloodGroup;
 
   DonorModel({
-    required int userId,
+    required String userId,
     required String mail,
     required String name,
     required String surname,
@@ -27,7 +27,7 @@ class DonorModel extends UserModel {
         );
 
   DonorModel copyWith({
-    int? userId,
+    String? userId,
     String? mail,
     String? name,
     String? surname,
@@ -36,7 +36,7 @@ class DonorModel extends UserModel {
     String? password,
     String? gender,
     String? bloodGroup,
-    int? donorId,
+    String? donorId,
   }) {
     return DonorModel(
       userId: userId ?? this.userId,
@@ -54,7 +54,7 @@ class DonorModel extends UserModel {
 
   static DonorModel getEmptyClass() {
     return DonorModel(
-      userId: 0,
+      userId: "",
       mail: "",
       name: "",
       surname: "",
@@ -63,7 +63,7 @@ class DonorModel extends UserModel {
       password: "",
       gender: "",
       bloodGroup: "",
-      donorId: 0,
+      donorId: "",
     );
   }
 

@@ -1,3 +1,4 @@
+import 'package:e_blood_donor/const/colorConst.dart';
 import 'package:e_blood_donor/const/textConsts.dart';
 import 'package:e_blood_donor/pages/adminHomePage/admin_login_page.dart';
 import 'package:e_blood_donor/pages/donorHomePage/donor_login_page.dart';
@@ -15,6 +16,7 @@ class HomePage extends StatelessWidget {
         title: const Text("Welcome E-Blood Donor App",style: TextStyles.titleStyle,),
         centerTitle: true,
         toolbarHeight: 100,
+        backgroundColor: ColorStyles.appBarBackgroundColor,
       ),
       body:  const Center(
         child: Column(

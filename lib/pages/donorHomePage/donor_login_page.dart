@@ -1,3 +1,4 @@
+import 'package:e_blood_donor/const/colorConst.dart';
 import 'package:e_blood_donor/pages/donorHomePage/donor_register_page.dart';
 import 'package:flutter/material.dart';
 
@@ -25,6 +26,7 @@ class _DonorLoginPageState extends State<DonorLoginPage> {
         ),
         centerTitle: true,
         toolbarHeight: 100,
+        backgroundColor: ColorStyles.appBarBackgroundColor,
       ),
       body: Center(
         child: Padding(
