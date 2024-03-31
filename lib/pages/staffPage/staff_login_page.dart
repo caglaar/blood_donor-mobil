@@ -1,15 +1,14 @@
-import 'package:e_blood_donor/const/colorConst.dart';
-import 'package:e_blood_donor/pages/donorHomePage/donor_register_page.dart';
+import 'package:e_blood_donor/const/color_const.dart';
 import 'package:flutter/material.dart';
 
-class DonorLoginPage extends StatefulWidget {
-  const DonorLoginPage({Key? key}) : super(key: key);
+class StaffLoginPage extends StatefulWidget {
+  const StaffLoginPage({Key? key}) : super(key: key);
 
   @override
-  State<DonorLoginPage> createState() => _DonorLoginPageState();
+  State<StaffLoginPage> createState() => _StaffLoginPageState();
 }
 
-class _DonorLoginPageState extends State<DonorLoginPage> {
+class _StaffLoginPageState extends State<StaffLoginPage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
@@ -66,15 +65,6 @@ class _DonorLoginPageState extends State<DonorLoginPage> {
                   child: ElevatedButton(
                     onPressed: () {},
                     child: const Text('Submit'),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 16.0),
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => const DonorRegisterPage()));
-                    },
-                    child: const Text('Register'),
                   ),
                 ),
               ],

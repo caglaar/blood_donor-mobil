@@ -1,5 +1,6 @@
-import 'package:e_blood_donor/const/colorConst.dart';
-import 'package:e_blood_donor/providers/register_provider.dart';
+import 'package:e_blood_donor/const/color_const.dart';
+import 'package:e_blood_donor/const/random_id_create.dart';
+import 'package:e_blood_donor/providers/donorProvider/register_provider.dart';
 import 'package:e_blood_donor/widgets/homeWidgets/form_register.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
@@ -25,7 +26,7 @@ class DonorRegisterPage extends StatelessWidget {
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(20.0),
-          child: Consumer<RegisterProvider>(
+          child: Consumer<DonorRegisterProvider>(
             builder: (context, registerProvider, child) {
               return FormBuilder(
                 key: registerProvider.formKey,
@@ -114,6 +115,8 @@ class DonorRegisterPage extends StatelessWidget {
                               registerProvider.formKey.currentState!.save();
                               registerProvider.donor =
                                   registerProvider.donor.copyWith(
+                                userId: generateRandomId(),
+                                donorId: generateRandomId(),
                                 mail: registerProvider
                                     .formKey.currentState!.value['mail'],
                                 name: registerProvider

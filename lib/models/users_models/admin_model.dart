@@ -1,4 +1,4 @@
-import 'package:e_blood_donor/models/user_models/user_model.dart';
+import 'package:e_blood_donor/models/users_models/user_model.dart';
 
 class AdminModel extends UserModel {
   late String hospitalId;

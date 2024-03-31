@@ -1,8 +1,8 @@
-import 'package:e_blood_donor/const/colorConst.dart';
-import 'package:e_blood_donor/const/textConsts.dart';
-import 'package:e_blood_donor/pages/adminHomePage/admin_login_page.dart';
-import 'package:e_blood_donor/pages/donorHomePage/donor_login_page.dart';
-import 'package:e_blood_donor/pages/staffHomePage/staff_login_page.dart';
+import 'package:e_blood_donor/const/color_const.dart';
+import 'package:e_blood_donor/const/text_consts.dart';
+import 'package:e_blood_donor/pages/adminPage/admin_login_page.dart';
+import 'package:e_blood_donor/pages/donorPage/donor_login_page.dart';
+import 'package:e_blood_donor/pages/staffPage/staff_login_page.dart';
 import 'package:e_blood_donor/widgets/homeWidgets/button_home.dart';
 import 'package:flutter/material.dart';
 

@@ -1,10 +1,10 @@
-import 'package:e_blood_donor/const/buttonConsts.dart';
-import 'package:e_blood_donor/const/textConsts.dart';
+import 'package:e_blood_donor/const/button_consts.dart';
+import 'package:e_blood_donor/const/text_consts.dart';
 import 'package:flutter/material.dart';
 
 class ButtonHome extends StatelessWidget {
   final String message;
-  final StatefulWidget page;
+  final Widget page;
 
   const ButtonHome({Key? key, required this.message, required this.page}) : super(key: key);
 

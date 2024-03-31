@@ -1,10 +1,12 @@
-import 'package:e_blood_donor/models/user_models/user_model.dart';
+import 'package:e_blood_donor/const/random_id_create.dart';
+import 'package:e_blood_donor/models/users_models/user_model.dart';
 
-class DonorModel extends UserModel {
-  late String donorId;
-  late String bloodGroup;
-
-  DonorModel({
+class StaffModel extends UserModel {
+  late String hospitalId;
+  late String staffId;
+  StaffModel({
+    required this.hospitalId,
+    required this.staffId,
     required String userId,
     required String mail,
     required String name,
@@ -13,8 +15,6 @@ class DonorModel extends UserModel {
     required String phoneNumber,
     required String password,
     required String gender,
-    required this.bloodGroup,
-    required this.donorId,
   }) : super(
           userId: userId,
           mail: mail,
@@ -25,8 +25,22 @@ class DonorModel extends UserModel {
           password: password,
           gender: gender,
         );
+  static StaffModel getEmptyClass() {
+    return StaffModel(
+      userId: generateRandomId(),
+      mail: "",
+      name: "",
+      surname: "",
+      birthDate: "",
+      phoneNumber: "",
+      password: "",
+      gender: "",
+      hospitalId: "",
+      staffId: generateRandomId(),
+    );
+  }
 
-  DonorModel copyWith({
+  StaffModel copyWith({
     String? userId,
     String? mail,
     String? name,
@@ -35,10 +49,10 @@ class DonorModel extends UserModel {
     String? phoneNumber,
     String? password,
     String? gender,
-    String? bloodGroup,
-    String? donorId,
+    String? staffId,
+    String? hospitalId,
   }) {
-    return DonorModel(
+    return StaffModel(
       userId: userId ?? this.userId,
       mail: mail ?? this.mail,
       name: name ?? this.name,
@@ -47,29 +61,10 @@ class DonorModel extends UserModel {
       phoneNumber: phoneNumber ?? this.phoneNumber,
       password: password ?? this.password,
       gender: gender ?? this.gender,
-      bloodGroup: bloodGroup ?? this.bloodGroup,
-      donorId: donorId ?? this.donorId,
+      staffId: staffId ?? this.staffId,
+      hospitalId: hospitalId ?? this.hospitalId,
     );
   }
 
-  static DonorModel getEmptyClass() {
-    return DonorModel(
-      userId: "",
-      mail: "",
-      name: "",
-      surname: "",
-      birthDate: "",
-      phoneNumber: "",
-      password: "",
-      gender: "",
-      bloodGroup: "",
-      donorId: "",
-    );
-  }
 
-  @override
-  String toString() {
-    // TODO: implement toString
-    return "NAME=$name\n SURNAME=$surname\n MAIL=$mail \n USER_ID=$userId\n BIRTH_DATE=$birthDate\n PHONE_NUMBER=$phoneNumber\n PASSWORD=$password\n GENDER=$gender\n BLOOD_GROUP=$bloodGroup\n DONOR_ID=$donorId";
-  }
 }
