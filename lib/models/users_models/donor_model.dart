@@ -1,4 +1,3 @@
-import 'package:e_blood_donor/const/random_id_create.dart';
 import 'package:e_blood_donor/models/users_models/user_model.dart';
 
 class DonorModel extends UserModel {

@@ -20,20 +20,26 @@ class DonorLoginProvider extends ChangeNotifier {
     if (querySnapshot.docs.isNotEmpty) {
       // Kullanıcı bulundu,
       var userDoc = querySnapshot.docs.first;
-      var userData = userDoc.data()  ;
-      String savedPassword = userData['password'] ?? "";
+      print('userDoc data: ${userDoc.data()}');
+      var userData = userDoc.data()  as Map<String, dynamic>;
+      print('userDoc data2: $userData');
+      if(userData != null)
+      {
+        String savedPassword = userData['password'] ?? "";
 
-      if (savedPassword == donor.password) {
-        // Şifre eşleşiyor
-        _donor.name = userData['name'] ?? "";
-        _donor.surname = userData['surname'] ?? "";
-        _donor.phoneNumber = userData['phoneNumber'] ?? "";
-        _donor.userId = userData['userId'] ?? "";
-        _donor.birthDate = userData['birthDate'] ?? "";
-        _donor.gender = userData['gender'] ?? "";
-        
-      return (true);
-
+        if (savedPassword == donor.password) 
+        {
+          // Şifre eşleşiyor
+          _donor.name = userData['name'];
+          _donor.surname = userData['surname'] ?? "";
+          _donor.phoneNumber = userData['phoneNumber'] ?? "";
+          _donor.userId = userData['userId'] ?? "";
+          _donor.birthDate = userData['birthDate'] ?? "";
+          _donor.gender = userData['gender'] ?? "";
+          return (true);
+        }
+        print("userDAta NULL GELDİ");
+        return (false);
       } else {
         print('Şifre eşleşmiyor!');
         return (false);
