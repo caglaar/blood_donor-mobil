@@ -1,4 +1,6 @@
 import 'package:e_blood_donor/models/users_models/donor_model.dart';
+import 'package:e_blood_donor/service/auth_service.dart';
+import 'package:e_blood_donor/service/donor_services/donor_auth_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -6,61 +8,26 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class DonorLoginProvider extends ChangeNotifier {
   GlobalKey<FormBuilderState> formKey = GlobalKey<FormBuilderState>();
   DonorModel _donor = DonorModel.getEmptyClass();
+  UserAuthService userService = UserAuthService();
+  DonorServices donorService = DonorServices();
 
-  Future<bool> checkUserCredentials() async {
-  FirebaseFirestore firestore = FirebaseFirestore.instance;
-  
-  try {
-    QuerySnapshot querySnapshot = await firestore
-        .collection('users')
-        .where('mail', isEqualTo: _donor.mail)
-        .limit(1)
-        .get();
-
-    if (querySnapshot.docs.isNotEmpty) {
-      // Kullanıcı bulundu,
-      var userDoc = querySnapshot.docs.first;
-      print('userDoc data: ${userDoc.data()}');
-      var userData = userDoc.data()  as Map<String, dynamic>;
-      print('userDoc data2: $userData');
-      if(userData != null)
-      {
-        String savedPassword = userData['password'] ?? "";
-
-        if (savedPassword == donor.password) 
-        {
-          // Şifre eşleşiyor
-          _donor.name = userData['name'];
-          _donor.surname = userData['surname'] ?? "";
-          _donor.phoneNumber = userData['phoneNumber'] ?? "";
-          _donor.userId = userData['userId'] ?? "";
-          _donor.birthDate = userData['birthDate'] ?? "";
-          _donor.gender = userData['gender'] ?? "";
-          return (true);
-        }
-        print("userDAta NULL GELDİ");
-        return (false);
-      } else {
-        print('Şifre eşleşmiyor!');
-        return (false);
-      }
+  Future<bool> signInDonor() async {
+    bool signInSuccess = await userService.signIn(donor);
+    if (signInSuccess) {
+      print("\nGİRDİ BURAYA");
+      await donorService.loginDonor(donor);
+      return (true);
     } else {
-      print('Kullanıcı bulunamadı!');
-      return (false);  
+      return (false);
     }
-  } catch (e) {
-    print('Veri okuma hatası: $e');
-    return (false);
-
   }
-}
 
 
   DonorModel get donor => _donor;
 
   set donor(DonorModel value) {
     _donor = value;
-    checkUserCredentials();
+    signInDonor();
     notifyListeners();
   }
 }

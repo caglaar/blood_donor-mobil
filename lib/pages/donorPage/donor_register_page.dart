@@ -115,7 +115,7 @@ class DonorRegisterPage extends StatelessWidget {
                               registerProvider.formKey.currentState!.save();
                               registerProvider.donor =
                                   registerProvider.donor.copyWith(
-                                userId: generateRandomId(),
+                                userId: "",
                                 donorId: generateRandomId(),
                                 mail: registerProvider
                                     .formKey.currentState!.value['mail'],

@@ -1,5 +1,6 @@
 import 'package:e_blood_donor/const/color_const.dart';
 import 'package:e_blood_donor/pages/donorPage/donor_home_page.dart';
+import 'package:e_blood_donor/pages/donorPage/donor_register_page.dart';
 import 'package:e_blood_donor/providers/donorProvider/login_provider.dart';
 import 'package:e_blood_donor/widgets/homeWidgets/form_register.dart';
 import 'package:flutter/material.dart';
@@ -70,12 +71,12 @@ class DonorLoginPage extends StatelessWidget {
                                     .formKey.currentState!.value['password'],
                               );
                             }
-                            bool isLoggedIn = await donorLoginProvider.checkUserCredentials();
+                            bool isLoggedIn = await donorLoginProvider.signInDonor();
                             if (isLoggedIn) {
                               // Kullanıcı doğru kimlik doğrulaması yaptı, yeni sayfaya yönlendir
                               Navigator.of(context).pushReplacement(
                                 MaterialPageRoute(
-                                  builder: (context) => DonorHomePage(),
+                                  builder: (context) => DonorHomePage(donor: donorLoginProvider.donor),
                                 ),
                               );
                             } else {
@@ -92,6 +93,16 @@ class DonorLoginPage extends StatelessWidget {
                           child: const Text('Login'),
                         ),
                       ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 16.0),
+                        child: ElevatedButton(onPressed: (){
+                          Navigator.of(context).pushReplacement(
+                                MaterialPageRoute(
+                                  builder: (context) => DonorRegisterPage(),
+                                ),
+                          );
+                        }, child: Text("Register")),
+                      )
                     ],
                   ),
                 ),
