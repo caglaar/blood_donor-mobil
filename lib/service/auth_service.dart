@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_blood_donor/models/users_models/user_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 
 class UserAuthService
 {
@@ -51,7 +50,7 @@ class UserAuthService
         user.userId = userData['userId'] ?? "";
         user.birthDate = userData['birthDate'] ?? "";
         user.gender = userData['gender'] ?? "";
-
+        //shared preferencess
         return (true);
       }
     } on FirebaseAuthException catch (e) {

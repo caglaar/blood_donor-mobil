@@ -8,7 +8,7 @@ class DonorRegisterProvider extends ChangeNotifier {
   GlobalKey<FormBuilderState> formKey = GlobalKey<FormBuilderState>();
   DonorModel _donor = DonorModel.getEmptyClass();
   UserAuthService userService = UserAuthService();
-  DonorServices donorService = DonorServices();
+  DonorAuthServices donorService = DonorAuthServices();
   
   DonorModel get donor => _donor;
 
@@ -23,7 +23,7 @@ class DonorRegisterProvider extends ChangeNotifier {
     bool signUpSuccess = await userService.signUp(donor);
     if (signUpSuccess) {
       print("\nGİRDİ BURAYA");
-      donorService.registerDonor(donor);
+      await donorService.registerDonor(donor);
     } else {
       // Kayıt başarısız mesajı veya işlemleri
     }

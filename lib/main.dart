@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return  MultiProvider(
       providers: SetupProviders.providers,
-      child:  MaterialApp(
+      child:  const MaterialApp(
         title: 'E-BloodDonor',
         home: HomePage(),
       ),

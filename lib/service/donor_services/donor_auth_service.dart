@@ -2,7 +2,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_blood_donor/models/users_models/donor_model.dart';
 
-class DonorServices {
+class DonorAuthServices {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
   Future<void> registerDonor(DonorModel donor) async {

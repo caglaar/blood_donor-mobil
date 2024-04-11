@@ -1,16 +1,35 @@
 import 'package:e_blood_donor/models/users_models/donor_model.dart';
+import 'package:e_blood_donor/pages/donorPage/donor_appointments_page.dart';
+import 'package:e_blood_donor/pages/donorPage/donor_information_page.dart';
+import 'package:e_blood_donor/pages/donorPage/donor_take_appointment_page.dart';
+import 'package:e_blood_donor/providers/donorProvider/donor_bottom_bar_provider.dart';
+import 'package:e_blood_donor/widgets/donorWidgets/donor_bottom_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class DonorHomePage extends StatelessWidget {
-  const DonorHomePage({super.key, required this.donor});
+  const DonorHomePage({Key? key, required this.donor}) : super(key: key);
   final DonorModel donor;
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(),
-      body: Center(
-        child: Text("DONOR SAYFASI \n ${donor.toString()}"),
-      ),
+    return Consumer<DonorBottomBarProvider>(
+      builder: (context,donorBottomBarProvider,child) {
+        return Scaffold(
+          body: IndexedStack(
+            index: donorBottomBarProvider.selectedIndex,
+            children: [
+              DonorAppointmentsPage(donor: donor),
+              DonorInformationPage(donor: donor),
+              DonorTakeAppointmentPage(donor: donor),
+            ],
+          ),
+          bottomNavigationBar: DonorBottomBar(
+            currentIndex: donorBottomBarProvider.selectedIndex, 
+            onItemTapped: donorBottomBarProvider.setSelectedIndex
+          )
+        );
+      }
     );
   }
 }
