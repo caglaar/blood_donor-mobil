@@ -28,6 +28,7 @@ class DonorAppointmentServices {
         // Randevuyu listeye ekle
         appointments.add(appointment);
       };
+      print("Appointment get service finished");
       
       return (appointments);
     } catch (e) {

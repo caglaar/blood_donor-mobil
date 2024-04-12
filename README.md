@@ -1,5 +1,7 @@
 # e_blood_donor
-
+We used provider, one of the state management methods, in our project.(https://pub.dev/packages/provider)
+We use the Firebase Firestore Database.
+We calculate 2 point between distance with Haversine Algorithm. Algorithm is in the "lib/functions/haversine.dart"
 A new Flutter project.
 
 ## Getting Started

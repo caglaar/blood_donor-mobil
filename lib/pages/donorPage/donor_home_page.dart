@@ -1,7 +1,7 @@
 import 'package:e_blood_donor/models/users_models/donor_model.dart';
-import 'package:e_blood_donor/pages/donorPage/donor_appointments_page.dart';
-import 'package:e_blood_donor/pages/donorPage/donor_information_page.dart';
-import 'package:e_blood_donor/pages/donorPage/donor_take_appointment_page.dart';
+import 'package:e_blood_donor/widgets/donorWidgets/donor_appointments_body.dart';
+import 'package:e_blood_donor/widgets/donorWidgets/donor_information_body.dart';
+import 'package:e_blood_donor/widgets/donorWidgets/donor_take_appointment_body.dart';
 import 'package:e_blood_donor/providers/donorProvider/donor_bottom_bar_provider.dart';
 import 'package:e_blood_donor/widgets/donorWidgets/donor_bottom_bar.dart';
 import 'package:flutter/material.dart';
