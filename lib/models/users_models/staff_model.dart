@@ -1,4 +1,4 @@
-import 'package:e_blood_donor/const/random_id_create.dart';
+import 'package:e_blood_donor/functions/generating_functions.dart';
 import 'package:e_blood_donor/models/users_models/user_model.dart';
 
 class StaffModel extends UserModel {
@@ -27,7 +27,7 @@ class StaffModel extends UserModel {
         );
   static StaffModel getEmptyClass() {
     return StaffModel(
-      userId: generateRandomId(),
+      userId: "generateRandomId()",
       mail: "",
       name: "",
       surname: "",
@@ -36,7 +36,7 @@ class StaffModel extends UserModel {
       password: "",
       gender: "",
       hospitalId: "",
-      staffId: generateRandomId(),
+      staffId: GeneratingFunctions.generateRandomId(),
     );
   }
 
@@ -65,6 +65,10 @@ class StaffModel extends UserModel {
       hospitalId: hospitalId ?? this.hospitalId,
     );
   }
-
-
+  @override
+  String toString() {
+    // TODO: implement toString
+    return "NAME=$name\n SURNAME=$surname\n MAIL=$mail \n USER_ID=$userId\n BIRTH_DATE=$birthDate\n"  
+           "PHONE_NUMBER=$phoneNumber\n PASSWORD=$password\n GENDER=$gender\n STaff ID=$staffId\n HOSPİTAL_ID=$hospitalId";
+  }
 }

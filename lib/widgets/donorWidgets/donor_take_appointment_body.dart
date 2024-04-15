@@ -35,7 +35,7 @@ class DonorTakeAppointmentPage extends StatelessWidget {
                 (
                   message: "Take Appointment",
                   onPressed: (){
-                    takeAppointmentProvider.takeAppointments();
+                    takeAppointmentProvider.takeAppointments(donor);
                   }
                 ),
               );

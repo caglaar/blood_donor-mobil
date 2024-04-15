@@ -1,10 +1,11 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class HospitalModel {
   late String hospitalId;
   late String mail;
   late String name;
   late String address;
-  late double longitude;
-  late double latitude;
+  late GeoPoint geoPoint;
   late int apStock;
   late int anStock;
   late int abpStock;
@@ -19,8 +20,7 @@ class HospitalModel {
     required this.mail,
     required this.name,
     required this.address,
-    required this.longitude,
-    required this.latitude,
+    required this.geoPoint,
     required this.apStock,
     required this.anStock,
     required this.abnStock,
@@ -39,8 +39,7 @@ class HospitalModel {
       mail: "",
       name: "", 
       address: "", 
-      longitude: 0, 
-      latitude: 0, 
+      geoPoint: GeoPoint(0, 0),
       apStock: 0, 
       anStock: 0, 
       abnStock: 0, 
@@ -50,5 +49,12 @@ class HospitalModel {
       znStock: 0, 
       zpStock: 0
       );
+  }
+  @override
+  String toString() {
+    // TODO: implement toString
+    return "NAME=$name\n  MAIL=$mail \n HOSPİTAL_ID=$hospitalId\n A+ STOCK = $apStock\n A- STOCK = $anStock\n"
+            "B+ STOCK = $bpStock\n B- STOCK = $bnStock\n AB+ STOCK = $abpStock\n AB- STOCK = $abnStock\n"
+            "00+ STOCK = $zpStock\n 00- STOCK = $znStock\n GeoPoint = ${geoPoint.latitude} - ${geoPoint.longitude}";
   }
 }
