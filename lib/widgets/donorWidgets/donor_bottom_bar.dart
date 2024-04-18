@@ -1,14 +1,9 @@
 import 'package:flutter/material.dart';
 
-class DonorBottomBar extends StatefulWidget {
+class DonorBottomBar extends StatelessWidget {
   const DonorBottomBar({super.key, required this.currentIndex, required this.onItemTapped });
   final int currentIndex;
   final ValueChanged<int> onItemTapped;
-  @override
-  State<DonorBottomBar> createState() => _DonorBottomBarState();
-}
-
-class _DonorBottomBarState extends State<DonorBottomBar> {
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
@@ -27,8 +22,8 @@ class _DonorBottomBarState extends State<DonorBottomBar> {
           label: 'Take Appointment',
         ),
       ],
-      currentIndex: widget.currentIndex,
-      onTap: widget.onItemTapped,
+      currentIndex: currentIndex,
+      onTap: onItemTapped,
     );
   }
 }

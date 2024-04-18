@@ -2,6 +2,7 @@ import 'package:e_blood_donor/const/color_const.dart';
 import 'package:e_blood_donor/models/users_models/donor_model.dart';
 import 'package:e_blood_donor/providers/donorProvider/donor_take_appoint_provider.dart';
 import 'package:e_blood_donor/widgets/donorWidgets/appointment_button.dart';
+import 'package:e_blood_donor/widgets/donorWidgets/appointment_maps.dart';
 import 'package:e_blood_donor/widgets/donorWidgets/appointment_waiting_circular.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -52,7 +53,7 @@ class DonorTakeAppointmentPage extends StatelessWidget {
               }
               else
               {
-                return Center (child: Text("MAP GELCEK"),);
+                return MapScreen(startPoint: takeAppointmentProvider.myLocation,endPoint: takeAppointmentProvider.nearLocation);
               }
             }
           },
