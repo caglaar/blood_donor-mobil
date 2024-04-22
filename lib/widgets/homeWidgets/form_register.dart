@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 
@@ -5,13 +7,15 @@ class FormRegister extends StatelessWidget {
   final String? initialValue;
   final String? keyValue;
   final String hintText;
+  final bool obsText;
   final String? Function(String?)? validator;
   const FormRegister(
       {super.key,
       this.initialValue,
       this.keyValue,
       required this.hintText,
-      this.validator});
+      this.validator,
+      this.obsText = false,});
 
   @override
   Widget build(BuildContext context) {
@@ -19,6 +23,7 @@ class FormRegister extends StatelessWidget {
       /* key: _emailFieldKey, */
       name: keyValue ?? 'email',
       initialValue: initialValue,
+      obscureText: obsText,
       decoration: InputDecoration(
         filled: true,
         fillColor: Colors.white,

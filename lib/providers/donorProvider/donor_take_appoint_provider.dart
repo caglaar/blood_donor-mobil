@@ -18,17 +18,24 @@ class DonoTakeAppointmentProvider extends ChangeNotifier {
   int get isAppoitmentLoading => _isAppoitmentLoading;
   DonorAppointmentServices donorAppointmentServices =  DonorAppointmentServices();
 
+  void  finishAppointment()
+  {
+    _isAppoitmentLoading = 3;
+    notifyListeners();
+  }
   Future<void> takeAppointments(DonorModel donor) async {
     try {
       _pressedButton = true;
       _isAppoitmentLoading = 1;
       _myLocation = await Location.getCurrentLocation();
+      print("My Location = ${_myLocation}");
       notifyListeners();
-      await Future.delayed(const Duration(seconds: 10),(){
+      await Future.delayed(const Duration(seconds: 5),(){
       });
       notifyListeners();
       try {
         _nearHospitalLocation = await donorAppointmentServices.takeAppointment(_myLocation,donor);
+        print("My Location = ${_nearHospitalLocation}");
         _isAppoitmentLoading = 2;
         notifyListeners();
       } catch (e) {

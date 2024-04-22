@@ -1,3 +1,4 @@
+import 'package:e_blood_donor/const/button_consts.dart';
 import 'package:e_blood_donor/const/color_const.dart';
 import 'package:e_blood_donor/pages/donorPage/donor_home_page.dart';
 import 'package:e_blood_donor/pages/donorPage/donor_register_page.dart';
@@ -55,6 +56,7 @@ class DonorLoginPage extends StatelessWidget {
                         initialValue: donorLoginProvider.donor.password,
                         keyValue: 'password',
                         hintText: 'Password',
+                        obsText: true,
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 16.0),
@@ -90,7 +92,8 @@ class DonorLoginPage extends StatelessWidget {
                             }
 
                           },
-                          child: const Text('Login'),
+                          child: Text("Login",style: TextStyle(color: Colors.black),),
+                          style: ButtonStyles.buttonType,
                         ),
                       ),
                       Padding(
@@ -101,7 +104,10 @@ class DonorLoginPage extends StatelessWidget {
                                   builder: (context) => DonorRegisterPage(),
                                 ),
                           );
-                        }, child: Text("Register")),
+                        }, 
+                        child: Text("Register",style: TextStyle(color: Colors.black),),
+                        style: ButtonStyles.buttonType,
+                        ),
                       )
                     ],
                   ),

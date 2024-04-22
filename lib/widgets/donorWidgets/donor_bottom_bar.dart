@@ -1,3 +1,4 @@
+import 'package:e_blood_donor/const/color_const.dart';
 import 'package:flutter/material.dart';
 
 class DonorBottomBar extends StatelessWidget {
@@ -9,21 +10,23 @@ class DonorBottomBar extends StatelessWidget {
     return BottomNavigationBar(
       items: const <BottomNavigationBarItem>[
         BottomNavigationBarItem(
-          icon: Icon(Icons.home,size: 36,),
+          icon: Icon(Icons.local_hospital_outlined,size: 36,),
           label: 'Appointments',
           
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.map,size: 36,),
+          icon: Icon(Icons.account_circle_outlined,size: 36,),
           label: 'Information',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.align_vertical_bottom_rounded,size: 36,),
+          icon: Icon(Icons.calendar_month_outlined,size: 36,),
           label: 'Take Appointment',
         ),
       ],
       currentIndex: currentIndex,
       onTap: onItemTapped,
+      selectedItemColor: ColorStyles.appBarBackgroundColor,
+      unselectedItemColor: Colors.black,
     );
   }
 }

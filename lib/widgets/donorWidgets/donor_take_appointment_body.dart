@@ -51,6 +51,10 @@ class DonorTakeAppointmentPage extends StatelessWidget {
               {
                 return AppointmentWaitingCircular();
               }
+              else if(takeAppointmentProvider.isAppoitmentLoading == 3)
+              {
+                return Center(child: Text("Thank you for your donation, we wish you healthy days.",style: TextStyle(color: Colors.black),),);
+              }
               else
               {
                 return MapScreen(startPoint: takeAppointmentProvider.myLocation,endPoint: takeAppointmentProvider.nearLocation);
