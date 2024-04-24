@@ -1,3 +1,4 @@
+import 'package:e_blood_donor/firebase_options.dart';
 import 'package:e_blood_donor/pages/mainPage/home_page.dart';
 import 'package:e_blood_donor/setup_provider.dart';
 import 'package:flutter/material.dart';
@@ -7,7 +8,9 @@ import 'package:firebase_core/firebase_core.dart';
 Future<void> main () async {
   WidgetsFlutterBinding.ensureInitialized();
   try {
-    await Firebase.initializeApp();
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform
+    );
     runApp(const MyApp());
   } catch (e) {
     print('Firebase bağlantı hatası: $e');
