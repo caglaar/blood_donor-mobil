@@ -27,7 +27,7 @@ class StaffModel extends UserModel {
         );
   static StaffModel getEmptyClass() {
     return StaffModel(
-      userId: "generateRandomId()",
+      userId: "",
       mail: "",
       name: "",
       surname: "",
@@ -36,7 +36,7 @@ class StaffModel extends UserModel {
       password: "",
       gender: "",
       hospitalId: "",
-      staffId: GeneratingFunctions.generateRandomId(),
+      staffId: "",
     );
   }
 
