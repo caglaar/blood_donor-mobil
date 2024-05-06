@@ -18,6 +18,7 @@ class StaffAppointmentServices {
       for(var doc in query.docs) {
         var appointmentData = doc.data() as Map<String, dynamic>;
         AppointmentModel appointment = AppointmentModel.getEmptyClass();
+        appointment.appointmentId=appointmentData["appointmentId"] ?? "";
         appointment.staffId = staff.staffId;
         appointment.date = appointmentData["date"] ?? "";
         appointment.hospitalId = appointmentData["hospitalId"] ?? "";
@@ -36,6 +37,32 @@ class StaffAppointmentServices {
       print("staff bilgileri alma hatası: $e");
       return ([]);
     }
+  }
+   Future <void>approveAppointment(AppointmentModel appointment)async{
+    FirebaseFirestore firestore = FirebaseFirestore.instance;
+
+  try {
+    // Belirli appointmentId'ye sahip belgeyi alınması
+    QuerySnapshot querySnapshot = await firestore.collection('appointments').where("appointmentId", isEqualTo: appointment.appointmentId).limit(1).get();
+    
+    // Belge varsa isActive alanını false olarak güncelleme
+    if (querySnapshot.docs.isNotEmpty) {
+      DocumentSnapshot appointmentSnapshot = querySnapshot.docs.first;
+
+      // Belge referansının alınması
+      DocumentReference appointmentRef = firestore.collection('appointments').doc(appointmentSnapshot.id);
+
+      // Belge güncelleme işlemi
+      await appointmentRef.update({
+        'isActive': false,
+      });
+      print('Belge başarıyla güncellendi.');
+    } else {
+      print('Belirtilen appointmentId\'ye sahip belge bulunamadı.');
+    }
+  } catch (error) {
+    print('Güncelleme işlemi başarısız: $error');
+  }
   }
   
   

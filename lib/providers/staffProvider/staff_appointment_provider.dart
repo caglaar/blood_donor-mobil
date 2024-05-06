@@ -1,7 +1,5 @@
 import 'package:e_blood_donor/models/appointment_models/appointment_model.dart';
-import 'package:e_blood_donor/models/users_models/donor_model.dart';
 import 'package:e_blood_donor/models/users_models/staff_model.dart';
-import 'package:e_blood_donor/service/donor_services/donor_apoointment_service.dart';
 import 'package:e_blood_donor/service/staff_services/staff_appointment_service.dart';
 import 'package:flutter/material.dart';
 
@@ -23,4 +21,15 @@ class StaffAppointmentProvider extends ChangeNotifier {
       notifyListeners();
     }
   }
+  // Future<void>approveAppointment(AppointmentModel appointment)async{
+  //   try{
+  //     await staffAppointmentServices.approveAppointment(appointment);
+  //     notifyListeners();
+  //   }
+  //   catch(e){
+  //     print("Error Updating Appointments: $e");
+  //     notifyListeners();
+  //   }
+  // }
+
 }

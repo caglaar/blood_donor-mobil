@@ -6,14 +6,14 @@ import 'package:e_blood_donor/widgets/staffWidgets/staff_appointment_card.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-
 class StaffAppointmentsPage extends StatelessWidget {
   StaffAppointmentsPage({Key? key, required this.staff}) : super(key: key);
   final StaffModel staff;
 
   @override
   Widget build(BuildContext context) {
-    final appointmentProvider=Provider.of<StaffAppointmentProvider>(context,listen: false);
+    final appointmentProvider =
+        Provider.of<StaffAppointmentProvider>(context, listen: false);
     appointmentProvider.getAppointments(staff);
     return Scaffold(
       appBar: AppBar(
@@ -30,31 +30,30 @@ class StaffAppointmentsPage extends StatelessWidget {
         ),
         backgroundColor: ColorStyles.appBarBackgroundColor,
       ),
-
       body: Consumer<StaffAppointmentProvider>(
         builder: (context, appointmentProvider, child) {
           if (appointmentProvider.appointments.isEmpty) {
-        // Randevu yoksa
-        return Center(
-          child: appointmentProvider.isLoading
-              ? const CircularProgressIndicator() // Veri çekilirken dönen çember
-              : const Text("Randevunuz bulunmuyor"), // Veri çekildiğinde
-        );
-      } else {
+            // Randevu yoksa
+            return Center(
+              child: appointmentProvider.isLoading
+                  ? const CircularProgressIndicator() // Veri çekilirken dönen çember
+                  : const Text("Randevunuz bulunmuyor"), // Veri çekildiğinde
+            );
+          } else {
             return ListView.builder(
               itemCount: appointmentProvider.appointments.length,
               itemBuilder: (context, index) {
                 AppointmentModel appointment =
                     appointmentProvider.appointments[index];
-                return StaffAppointmentCard(appointment: appointment, onPressed: (){},);
+                return StaffAppointmentCard(
+                  appointment: appointment,
+                 
+                );
               },
             );
           }
         },
       ),
-
-
-
     );
   }
 }
