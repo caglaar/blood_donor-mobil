@@ -1,5 +1,6 @@
 
 
+import 'package:e_blood_donor/providers/adminProvider/login_provider.dart';
 import 'package:e_blood_donor/providers/donorProvider/donor_appointment_provider.dart';
 import 'package:e_blood_donor/providers/donorProvider/donor_bottom_bar_provider.dart';
 import 'package:e_blood_donor/providers/donorProvider/donor_take_appoint_provider.dart';
@@ -22,6 +23,8 @@ class SetupProviders {
           create: (context) => DonorAppointmentProvider()),
         ChangeNotifierProvider(
           create: (context) => DonoTakeAppointmentProvider()),
+        ChangeNotifierProvider(
+          create: (context) => AdminLoginProvider()),
       ];
   
 }
