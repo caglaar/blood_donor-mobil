@@ -1,4 +1,3 @@
-import 'package:e_blood_donor/functions/generating_functions.dart';
 import 'package:e_blood_donor/models/users_models/user_model.dart';
 
 class StaffModel extends UserModel {
