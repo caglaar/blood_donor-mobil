@@ -169,7 +169,8 @@ class DonorAppointmentServices {
         'isActive': true,
         'staffId': staff.staffId,
         'staffNameSur': "${staff.name } ${staff.surname}",
-        'hospitalName': hospital.name
+        'hospitalName': hospital.name ,
+        'donorNameSur': "${donor.name } ${donor.surname}"
       });
       return (hospital.geoPoint);
     } catch (e) {
