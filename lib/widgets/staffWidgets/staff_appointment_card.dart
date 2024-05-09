@@ -31,7 +31,7 @@ class _StaffAppointmentCardState extends State<StaffAppointmentCard> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text("Date: ${widget.appointment.date}"),
-                        Text("Staff Name: ${widget.appointment.staffName}"),
+                        Text("Donor ID: ${widget.appointment.donorId}"),
                         Text("Active: ${widget.appointment.isActive ? 'Yes' : 'No'}"),
                       ],
                     ),
