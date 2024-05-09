@@ -23,6 +23,7 @@ class StaffAppointmentServices {
         appointment.date = appointmentData["date"] ?? "";
         appointment.hospitalId = appointmentData["hospitalId"] ?? "";
         appointment.donorId = appointmentData["donorId"] ?? "";
+        appointment.donorNameSur = appointmentData["donorNameSur"] ?? "";
         appointment.isActive = appointmentData["isActive"] ?? false;
         appointment.hospitalName = appointmentData["hospitalName"] ?? "";
         appointment.staffName = appointmentData["staffNameSur"] ?? "";
