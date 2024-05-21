@@ -93,8 +93,9 @@ class AdminLoginPage extends StatelessWidget {
                                     builder: (context) =>
                                         AdminHomePage(
                                           admin: adminLoginProvider.admin,
+                                          staff: adminLoginProvider.staff,
                                           hospital: adminLoginProvider
-                                              .hospital,),
+                                              .hospital),
                                   ),
                                 );
                               }

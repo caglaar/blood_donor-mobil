@@ -14,7 +14,7 @@ class RegisterHospitalAdmin {
       });
       return (true);
     } catch (e) {
-      print("Donor bilgileri ekleme hatası");
+      print("Hospital admin bilgileri ekleme hatası");
       return (false);
     }
   }

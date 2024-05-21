@@ -1,4 +1,5 @@
 import 'package:e_blood_donor/models/users_models/admin_model.dart';
+import 'package:e_blood_donor/models/users_models/staff_model.dart';
 import 'package:e_blood_donor/widgets/adminWidgets/update_stock_body.dart';
 import 'package:e_blood_donor/widgets/adminWidgets/admin_information_body.dart';
 import 'package:e_blood_donor/widgets/adminWidgets/add_staff_body.dart';
@@ -10,17 +11,18 @@ import 'package:provider/provider.dart';
 import '../../models/hospital_models/hospital_model.dart';
 
 class AdminHomePage extends StatefulWidget {
-  const AdminHomePage({Key? key, required this.admin, required this.hospital}) : super(key: key);
+  const AdminHomePage({Key? key, required this.admin, required this.hospital, required this.staff}) : super(key: key);
   final AdminModel admin;
   final HospitalModel hospital;
+  final StaffModel staff;
 
   @override
-  State<AdminHomePage> createState() => _DonorHomePageState();
+  State<AdminHomePage> createState() => _AdminHomePageState();
 }
 
-class _DonorHomePageState extends State<AdminHomePage> {
+class _AdminHomePageState extends State<AdminHomePage> {
   late Set<StatelessWidget> pages = {
-    AddStaffPage(admin: widget.admin),
+    AddStaffPage(staff: widget.staff, admin: widget.admin,),
     AdminInfoPage(admin: widget.admin, hospital: widget.hospital,),
     UpdateStockPage(admin: widget.admin),
   };
