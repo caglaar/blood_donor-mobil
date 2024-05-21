@@ -1,6 +1,7 @@
 import 'package:e_blood_donor/const/button_consts.dart';
 import 'package:e_blood_donor/const/color_const.dart';
 import 'package:e_blood_donor/pages/adminPage/admin_home_page.dart';
+import 'package:e_blood_donor/pages/generalAdminPage/generaladmin_home_page.dart';
 import 'package:e_blood_donor/providers/adminProvider/login_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:e_blood_donor/widgets/homeWidgets/form_register.dart';
@@ -72,24 +73,45 @@ class AdminLoginPage extends StatelessWidget {
                                         .formKey.currentState!.value['password'],
                                   );
                             }
-                            bool isLoggedIn = await adminLoginProvider.signInAdmin();
-                            if (isLoggedIn) {
-                              // Kullanıcı doğru kimlik doğrulaması yaptı, yeni sayfaya yönlendir
-                              Navigator.of(context).pushReplacement(
-                                MaterialPageRoute(
-                                  builder: (context) => AdminHomePage(admin: adminLoginProvider.admin),
-                                ),
-                              );
-                            } else {
-                              // Kullanıcı doğrulama başarısız oldu, hata mesajı göster
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                  content: Text('Kimlik doğrulaması başarısız!'),
-                                  duration: Duration(seconds: 2),
-                                ),
-                              );
+                            if(adminLoginProvider.admin.mail == "admin@gmail.com" && adminLoginProvider.admin.password == "adminn")
+                              {
+                                Navigator.of(context).pushReplacement(
+                                  MaterialPageRoute(
+                                    builder: (context) => GeneralAdminHomePage(),
+                                  ),
+                                );
+                              }
+                            else {
+                              print("DEVAMKEEE");
+                              bool isLoggedIn = await adminLoginProvider
+                                  .signInAdmin();
+
+                              if (isLoggedIn) {
+                                // Kullanıcı doğru kimlik doğrulaması yaptı, yeni sayfaya yönlendir
+                                Navigator.of(context).pushReplacement(
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        AdminHomePage(
+                                          admin: adminLoginProvider.admin,
+                                          hospital: adminLoginProvider
+                                              .hospital,),
+                                  ),
+                                );
+                              }
+
+                              else {
+                                // Kullanıcı doğrulama başarısız oldu, hata mesajı göster
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(
+                                        'Kimlik doğrulaması başarısız!'),
+                                    duration: Duration(seconds: 2),
+                                  ),
+                                );
+                              }
                             }
                           },
+
                           child: Text("Login",style: TextStyle(color: Colors.black),),
                           style: ButtonStyles.buttonType,
                         ),
