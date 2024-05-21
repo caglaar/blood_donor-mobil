@@ -19,7 +19,7 @@ class AdminBottomBar extends StatelessWidget {
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.update_outlined,size: 36,),
-          label: 'Update Hospital Stock',
+          label: 'Update Stock',
         ),
       ],
       currentIndex: currentIndex,
