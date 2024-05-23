@@ -37,7 +37,8 @@ class DonorModel extends UserModel {
     String? gender,
     String? bloodGroup,
     String? donorId,
-  }) {
+  })
+  {
     return DonorModel(
       userId: userId ?? this.userId,
       mail: mail ?? this.mail,

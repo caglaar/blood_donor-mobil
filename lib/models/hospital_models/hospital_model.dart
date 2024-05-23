@@ -29,32 +29,62 @@ class HospitalModel {
     required this.bpStock,
     required this.znStock,
     required this.zpStock,
-  }
-  );
+  });
 
-  static HospitalModel getEmptyClass()
-  {
+  static HospitalModel getEmptyClass() {
     return HospitalModel(
-      hospitalId: "", 
+      hospitalId: "",
       mail: "",
-      name: "", 
-      address: "", 
+      name: "",
+      address: "",
       geoPoint: GeoPoint(0, 0),
-      apStock: 0, 
-      anStock: 0, 
-      abnStock: 0, 
-      abpStock: 0, 
-      bnStock: 0, 
-      bpStock: 0, 
-      znStock: 0, 
-      zpStock: 0
-      );
+      apStock: 0,
+      anStock: 0,
+      abnStock: 0,
+      abpStock: 0,
+      bnStock: 0,
+      bpStock: 0,
+      znStock: 0,
+      zpStock: 0,
+    );
   }
+
+  HospitalModel copyWith({
+    String? hospitalId,
+    String? mail,
+    String? name,
+    String? address,
+    GeoPoint? geoPoint,
+    int? apStock,
+    int? anStock,
+    int? abpStock,
+    int? abnStock,
+    int? bpStock,
+    int? bnStock,
+    int? zpStock,
+    int? znStock,
+  }) {
+    return HospitalModel(
+      hospitalId: hospitalId ?? this.hospitalId,
+      mail: mail ?? this.mail,
+      name: name ?? this.name,
+      address: address ?? this.address,
+      geoPoint: geoPoint ?? this.geoPoint,
+      apStock: apStock ?? this.apStock,
+      anStock: anStock ?? this.anStock,
+      abpStock: abpStock ?? this.abpStock,
+      abnStock: abnStock ?? this.abnStock,
+      bpStock: bpStock ?? this.bpStock,
+      bnStock: bnStock ?? this.bnStock,
+      zpStock: zpStock ?? this.zpStock,
+      znStock: znStock ?? this.znStock,
+    );
+  }
+
   @override
   String toString() {
-    // TODO: implement toString
     return "NAME=$name\n  MAIL=$mail \n HOSPİTAL_ID=$hospitalId\n A+ STOCK = $apStock\n A- STOCK = $anStock\n"
-            "B+ STOCK = $bpStock\n B- STOCK = $bnStock\n AB+ STOCK = $abpStock\n AB- STOCK = $abnStock\n"
-            "00+ STOCK = $zpStock\n 00- STOCK = $znStock\n GeoPoint = ${geoPoint.latitude} - ${geoPoint.longitude}";
+        "B+ STOCK = $bpStock\n B- STOCK = $bnStock\n AB+ STOCK = $abpStock\n AB- STOCK = $abnStock\n"
+        "00+ STOCK = $zpStock\n 00- STOCK = $znStock\n GeoPoint = ${geoPoint.latitude} - ${geoPoint.longitude}";
   }
 }
