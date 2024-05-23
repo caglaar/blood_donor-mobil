@@ -1,6 +1,7 @@
 class AppointmentModel {
   late String appointmentId;
   late String donorId;
+  late String donorNameSur;
   late String staffId;
   late String staffName;
   late String hospitalId;
@@ -12,6 +13,7 @@ class AppointmentModel {
     {
       required this.appointmentId,
       required this.donorId,
+      required this.donorNameSur,
       required this.hospitalId,
       required this.hospitalName,
       required this.staffId,
@@ -29,6 +31,7 @@ class AppointmentModel {
       staffName: "",
       appointmentId: "", 
       donorId: "", 
+      donorNameSur:"",
       hospitalId: "", 
       staffId: "", 
       date: "", 

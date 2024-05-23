@@ -35,7 +35,9 @@ class UserAuthService
   Future <bool> signIn (UserModel user) async
   {
     try {
+     
       final UserCredential userCredential = await firebaseAuth.signInWithEmailAndPassword(email: user.mail, password: user.password);
+      
       if (userCredential.user != null)
       {
         user.userId = userCredential.user!.uid;

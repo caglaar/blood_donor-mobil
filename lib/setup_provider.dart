@@ -7,6 +7,9 @@ import 'package:e_blood_donor/providers/donorProvider/donor_appointment_provider
 import 'package:e_blood_donor/providers/donorProvider/donor_bottom_bar_provider.dart';
 import 'package:e_blood_donor/providers/donorProvider/donor_take_appoint_provider.dart';
 import 'package:e_blood_donor/providers/donorProvider/login_provider.dart';
+import 'package:e_blood_donor/providers/staffProvider/staff_login_provider.dart';
+import 'package:e_blood_donor/providers/staffProvider/staff_bottom_bar_provider.dart';
+import 'package:e_blood_donor/providers/staffProvider/staff_appointment_provider.dart';
 import 'package:e_blood_donor/providers/donorProvider/register_provider.dart';
 import 'package:e_blood_donor/providers/generalAdminProvider/generaladmin_bottom_bar_provider.dart';
 import 'package:e_blood_donor/providers/generalAdminProvider/register_hospitalAdmin_provider.dart';
@@ -43,8 +46,12 @@ class SetupProviders {
             create: (context) => AddHospitalProvider()),
         ChangeNotifierProvider(
             create: (context) => AddStaffProvider()),
-
-
+          ChangeNotifierProvider(
+          create: (context) => StaffLoginProvider()),
+          ChangeNotifierProvider(
+          create: (context) => StaffBottomBarProvider()),
+          ChangeNotifierProvider(
+          create: (context) => StaffAppointmentProvider()),
       ];
-  
+ 
 }

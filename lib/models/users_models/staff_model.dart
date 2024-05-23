@@ -1,4 +1,3 @@
-import 'package:e_blood_donor/functions/generating_functions.dart';
 import 'package:e_blood_donor/models/users_models/user_model.dart';
 
 class StaffModel extends UserModel {
@@ -27,7 +26,7 @@ class StaffModel extends UserModel {
         );
   static StaffModel getEmptyClass() {
     return StaffModel(
-      userId: "generateRandomId()",
+      userId: "",
       mail: "",
       name: "",
       surname: "",
@@ -36,7 +35,7 @@ class StaffModel extends UserModel {
       password: "",
       gender: "",
       hospitalId: "",
-      staffId: GeneratingFunctions.generateRandomId(),
+      staffId: "",
     );
   }
 
