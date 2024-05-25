@@ -29,8 +29,8 @@ class UpdateStockService {
         'bnStock': data['bnStock'] ?? 0,
         'abpStock': data['abpStock'] ?? 0,
         'abnStock': data['abnStock'] ?? 0,
-        'opStock': data['opStock'] ?? 0,
-        'onStock': data['onStock'] ?? 0,
+        'zpStock': data['zpStock'] ?? 0,
+        'znStock': data['znStock'] ?? 0,
       };
     } catch (e) {
       print('Error fetching blood stocks: $e');

@@ -14,7 +14,6 @@ import 'package:e_blood_donor/providers/donorProvider/register_provider.dart';
 import 'package:e_blood_donor/providers/generalAdminProvider/generaladmin_bottom_bar_provider.dart';
 import 'package:e_blood_donor/providers/generalAdminProvider/register_hospitalAdmin_provider.dart';
 import 'package:e_blood_donor/providers/hospitalProvider/add_hospital_provider.dart';
-import 'package:e_blood_donor/providers/hospitalProvider/update_stock_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
 

@@ -16,6 +16,7 @@ class AppointmentCard extends StatelessWidget {
         subtitle: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            Text("Hospital: ${appointment.hospitalName}"),
             Text("Date: ${appointment.date}"),
             Text("Staff Name: ${appointment.staffName}"),
             Text("Active: ${appointment.isActive ? 'Yes' : 'No'}"),

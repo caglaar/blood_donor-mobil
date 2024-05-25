@@ -46,36 +46,36 @@ class DonorAppointmentServices {
     var data = doc.data() as Map<String, dynamic>;
     switch (donor.bloodGroup) {
           case ("ARh(+)"):
-            String stock= data["apStock"] ?? "0";
-            temp.apStock = int.tryParse(stock) ?? 0;
+            int stock= data["apStock"] ?? 0;
+            temp.apStock = stock ;
             return ((temp.apStock > 50) ? false : true);
           case ("ARh(-)"):
-            String stock= data["anStock"] ?? "0";
-            temp.anStock = int.tryParse(stock) ?? 0;
+            int stock= data["anStock"] ?? 0;
+            temp.anStock = stock;
             return ((temp.anStock > 50) ? false : true);
           case ("BRh(+)"):
-            String stock= data["bpStock"] ?? "0";
-            temp.bpStock = int.tryParse(stock) ?? 0;
+            int stock= data["bpStock"] ?? 0;
+            temp.bpStock = stock;
             return ((temp.bpStock > 50) ? false : true);
           case ("BRh(-)"):
-            String stock= data["bnStock"] ?? "0";
-            temp.bnStock = int.tryParse(stock) ?? 0;
+            int stock= data["bnStock"] ?? 0;
+            temp.bnStock = stock;
             return ((temp.bnStock > 50) ? false : true);
           case ("ABRh(+)"):
-            String stock= data["abpStock"] ?? "0";
-            temp.abpStock = int.tryParse(stock) ?? 0;
+            int stock= data["abpStock"] ?? 0;
+            temp.abpStock = stock;
             return ((temp.abpStock > 50) ? false : true);
           case ("ABRh(-)"):
-            String stock= data["abnStock"] ?? "0";
-            temp.abnStock = int.tryParse(stock) ?? 0;
+            int stock= data["abnStock"] ?? 0;
+            temp.abnStock = stock;
             return ((temp.abnStock > 50) ? false : true);
           case ("00Rh(+)"):
-            String stock= data["zpStock"] ?? "0";
-            temp.zpStock = int.tryParse(stock) ?? 0;
+            int stock= data["zpStock"] ?? 0;
+            temp.zpStock = stock;
             return ((temp.zpStock > 50) ? false : true);
           case ("00Rh(-)"):
-            String stock= data["znStock"] ?? "0";
-            temp.znStock = int.tryParse(stock) ?? 0;
+            int stock= data["znStock"] ?? 0;
+            temp.znStock = stock;
             return ((temp.znStock > 50) ? false : true);
           default:
             return (false);

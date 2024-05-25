@@ -1,4 +1,3 @@
-import 'package:e_blood_donor/models/hospital_models/hospital_model.dart';
 import 'package:e_blood_donor/widgets/generalAdminWidgets/add_hospital_body.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
