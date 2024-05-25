@@ -11,7 +11,7 @@ class AddHospitalService {
         'name': hospital.name,
         'address': hospital.address,
         'mail': hospital.mail,
-        'location': hospital.geoPoint,
+        'geoPoint': hospital.geoPoint,
         'hospitalId': hospital.hospitalId,
         'apStock' : hospital.apStock,
         'anStock' : hospital.anStock,
