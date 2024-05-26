@@ -31,6 +31,7 @@ class _StaffAppointmentCardState extends State<StaffAppointmentCard> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text("Date: ${widget.appointment.date}"),
+                        Text("BloodGroup: ${widget.appointment.bloodGroup}"),
                         Text("Donor Name Surname: ${widget.appointment.donorNameSur}"),
                         Text("Active: ${widget.appointment.isActive ? 'Yes' : 'No'}"),
                       ],
