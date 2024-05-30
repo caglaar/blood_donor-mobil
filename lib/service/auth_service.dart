@@ -45,14 +45,12 @@ class UserAuthService
         var userDoc = query.docs.first;
         var userData = userDoc.data()  as Map<String, dynamic>;
         
-        //Bilgileri alındıgı yer
         user.name = userData['name'] ?? "";
         user.surname = userData['surname'] ?? "";
         user.phoneNumber = userData['phoneNumber'] ?? "";
         user.userId = userData['userId'] ?? "";
         user.birthDate = userData['birthDate'] ?? "";
         user.gender = userData['gender'] ?? "";
-        //shared preferencess
         return (true);
       }
     } on FirebaseAuthException catch (e) {
