@@ -1,7 +1,7 @@
-import 'package:e_blood_donor/widgets/generalAdminWidgets/add_hospital_body.dart';
 import 'package:e_blood_donor/providers/adminProvider/admin_bottom_bar_provider.dart';
 import 'package:e_blood_donor/widgets/generalAdminWidgets/add_hospital_admin_body.dart';
 import 'package:e_blood_donor/widgets/generalAdminWidgets/generaladmin_bottom_bar.dart';
+import 'package:e_blood_donor/widgets/generalAdminWidgets/map_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -15,7 +15,7 @@ class GeneralAdminHomePage extends StatefulWidget {
 
 class _DonorHomePageState extends State<GeneralAdminHomePage> {
   late Set<StatelessWidget> pages = {
-    const AddHospitalPage(latitude: 0, longitude: 0,),
+    HospitalMapScreen(),
     const AddHospitalAdminPage()
   };
   @override
