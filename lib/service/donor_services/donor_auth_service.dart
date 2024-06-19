@@ -16,6 +16,7 @@ class DonorAuthServices {
       print("Donor bilgileri ekleme hatası");
     }
 }
+  
   Future<void> loginDonor(DonorModel donor) async {
     try {
       QuerySnapshot query = await _firestore.collection("donors").where("userId",isEqualTo: donor.userId).limit(1).get();

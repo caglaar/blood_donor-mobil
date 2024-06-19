@@ -3,6 +3,7 @@
 import 'package:e_blood_donor/providers/adminProvider/add_staff_provider.dart';
 import 'package:e_blood_donor/providers/adminProvider/admin_bottom_bar_provider.dart';
 import 'package:e_blood_donor/providers/adminProvider/login_provider.dart';
+import 'package:e_blood_donor/providers/auth_service_provider.dart';
 import 'package:e_blood_donor/providers/donorProvider/donor_appointment_provider.dart';
 import 'package:e_blood_donor/providers/donorProvider/donor_bottom_bar_provider.dart';
 import 'package:e_blood_donor/providers/donorProvider/donor_take_appoint_provider.dart';
@@ -49,6 +50,8 @@ class SetupProviders {
             create: (context) => StaffAppointmentProvider()),
         ChangeNotifierProvider(
             create: (context) => HospitalLocationProvider()),
+        ChangeNotifierProvider(
+            create: (context) => AuthServiceProvider()),
       ];
  
 }

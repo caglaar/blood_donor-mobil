@@ -14,6 +14,8 @@ class StaffModel extends UserModel {
     required String phoneNumber,
     required String password,
     required String gender,
+    required int type,
+
   }) : super(
           userId: userId,
           mail: mail,
@@ -23,6 +25,7 @@ class StaffModel extends UserModel {
           phoneNumber: phoneNumber,
           password: password,
           gender: gender,
+          type: type
         );
   static StaffModel getEmptyClass() {
     return StaffModel(
@@ -36,6 +39,7 @@ class StaffModel extends UserModel {
       gender: "",
       hospitalId: "",
       staffId: "",
+      type: 1
     );
   }
 
@@ -50,6 +54,7 @@ class StaffModel extends UserModel {
     String? gender,
     String? staffId,
     String? hospitalId,
+    int? type,
   }) {
     return StaffModel(
       userId: userId ?? this.userId,
@@ -62,12 +67,13 @@ class StaffModel extends UserModel {
       gender: gender ?? this.gender,
       staffId: staffId ?? this.staffId,
       hospitalId: hospitalId ?? this.hospitalId,
+      type: type ?? this.type,
     );
   }
   @override
   String toString() {
     // TODO: implement toString
-    return "NAME=$name\n SURNAME=$surname\n MAIL=$mail \n USER_ID=$userId\n BIRTH_DATE=$birthDate\n"  
+    return "NAME=$name\n SURNAME=$surname\n USER_ID=$type\n MAIL=$mail \n USER_ID=$userId\n BIRTH_DATE=$birthDate\n"  
            "PHONE_NUMBER=$phoneNumber\n PASSWORD=$password\n GENDER=$gender\n STaff ID=$staffId\n HOSPİTAL_ID=$hospitalId";
   }
 }

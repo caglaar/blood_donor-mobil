@@ -51,6 +51,7 @@ class UserAuthService
         user.userId = userData['userId'] ?? "";
         user.birthDate = userData['birthDate'] ?? "";
         user.gender = userData['gender'] ?? "";
+        user.type = userData['type'] ?? 0;
         return (true);
       }
     } on FirebaseAuthException catch (e) {

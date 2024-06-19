@@ -14,6 +14,7 @@ class AdminModel extends UserModel {
     required String phoneNumber,
     required String password,
     required String gender,
+    required int type,
   }) : super(
           userId: userId,
           mail: mail,
@@ -23,6 +24,7 @@ class AdminModel extends UserModel {
           phoneNumber: phoneNumber,
           password: password,
           gender: gender,
+          type: type
         );
   
   AdminModel copyWith({
@@ -36,6 +38,7 @@ class AdminModel extends UserModel {
     String? gender,
     String? hospitalId,
     String? adminId,
+    int? type,
   }) {
     return AdminModel(
       userId: userId ?? this.userId,
@@ -48,6 +51,7 @@ class AdminModel extends UserModel {
       gender: gender ?? this.gender,
       hospitalId: hospitalId ?? this.hospitalId,
       adminId: adminId ?? this.adminId,
+      type: type ?? this.type,
     );
   }
   static AdminModel getEmptyClass() {
@@ -62,6 +66,7 @@ class AdminModel extends UserModel {
       gender: "",
       hospitalId: "",
       adminId: "",
+      type: 2
     );
   }
 }

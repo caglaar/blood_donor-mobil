@@ -13,8 +13,10 @@ class DonorModel extends UserModel {
     required String phoneNumber,
     required String password,
     required String gender,
+    required int type,
     required this.bloodGroup,
     required this.donorId,
+
   }) : super(
           userId: userId,
           mail: mail,
@@ -24,6 +26,7 @@ class DonorModel extends UserModel {
           phoneNumber: phoneNumber,
           password: password,
           gender: gender,
+          type: type,
         );
 
   DonorModel copyWith({
@@ -37,6 +40,7 @@ class DonorModel extends UserModel {
     String? gender,
     String? bloodGroup,
     String? donorId,
+    int? type,
   })
   {
     return DonorModel(
@@ -50,6 +54,8 @@ class DonorModel extends UserModel {
       gender: gender ?? this.gender,
       bloodGroup: bloodGroup ?? this.bloodGroup,
       donorId: donorId ?? this.donorId,
+      type: type ?? this.type,
+      
     );
   }
 
@@ -65,6 +71,7 @@ class DonorModel extends UserModel {
       gender: "",
       bloodGroup: "",
       donorId: "",
+      type: 0
     );
   }
 
