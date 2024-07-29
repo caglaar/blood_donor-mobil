@@ -1,6 +1,6 @@
 import 'package:e_blood_donor/const/color_const.dart';
 import 'package:e_blood_donor/models/users_models/staff_model.dart';
-import 'package:e_blood_donor/widgets/staffWidgets/staff_personal_info_form.dart';
+import 'package:e_blood_donor/widgets/userWidgets/user_personal_info_form.dart';
 import 'package:flutter/material.dart';
 
 class StaffPersonalInfoPage extends StatelessWidget {
@@ -25,7 +25,7 @@ class StaffPersonalInfoPage extends StatelessWidget {
         ),
         backgroundColor: ColorStyles.appBarBackgroundColor,
       ),
-      body: StaffPersonalInfoForm(staff: staff),
+      body: UserPersonalInfoForm(user: staff),
     );
   }
 }

@@ -1,18 +1,18 @@
-import 'package:e_blood_donor/models/users_models/staff_model.dart';
+import 'package:e_blood_donor/models/users_models/user_model.dart';
 import 'package:e_blood_donor/service/user_services/user_personal_info_service.dart';
 import 'package:flutter/material.dart';
 
-class StaffPersonalInfoForm extends StatefulWidget {
-  final StaffModel staff;
+class UserPersonalInfoForm extends StatefulWidget {
+  final UserModel user;
 
-  const StaffPersonalInfoForm({Key? key, required this.staff})
+  const UserPersonalInfoForm({Key? key, required this.user})
       : super(key: key);
 
   @override
-  _StaffPersonalInfoFormState createState() => _StaffPersonalInfoFormState();
+  _UserPersonalInfoFormState createState() => _UserPersonalInfoFormState();
 }
 
-class _StaffPersonalInfoFormState extends State<StaffPersonalInfoForm> {
+class _UserPersonalInfoFormState extends State<UserPersonalInfoForm> {
   late TextEditingController birthDateController;
   late TextEditingController genderController;
   late TextEditingController mailController;
@@ -24,15 +24,15 @@ class _StaffPersonalInfoFormState extends State<StaffPersonalInfoForm> {
   @override
   void initState() {
     super.initState();
-    // Initialize controllers with current staff data
-    birthDateController = TextEditingController(text: widget.staff.birthDate);
-    genderController = TextEditingController(text: widget.staff.gender);
-    mailController = TextEditingController(text: widget.staff.mail);
-    nameController = TextEditingController(text: widget.staff.name);
-    passwordController = TextEditingController(text: widget.staff.password);
+    // Initialize controllers with current user data
+    birthDateController = TextEditingController(text: widget.user.birthDate);
+    genderController = TextEditingController(text: widget.user.gender);
+    mailController = TextEditingController(text: widget.user.mail);
+    nameController = TextEditingController(text: widget.user.name);
+    passwordController = TextEditingController(text: widget.user.password);
     phoneNumberController =
-        TextEditingController(text: widget.staff.phoneNumber);
-    surnameController = TextEditingController(text: widget.staff.surname);
+        TextEditingController(text: widget.user.phoneNumber);
+    surnameController = TextEditingController(text: widget.user.surname);
   }
 
   @override
@@ -60,7 +60,7 @@ class _StaffPersonalInfoFormState extends State<StaffPersonalInfoForm> {
               controller: birthDateController,
               onChanged: (newValue) {
                 setState(() {
-                  widget.staff.birthDate = newValue;
+                  widget.user.birthDate = newValue;
                 });
               },
               decoration: InputDecoration(labelText: 'Doğum Tarihi'),
@@ -69,7 +69,7 @@ class _StaffPersonalInfoFormState extends State<StaffPersonalInfoForm> {
               controller: genderController,
               onChanged: (newValue) {
                 setState(() {
-                  widget.staff.gender = newValue;
+                  widget.user.gender = newValue;
                 });
               },
               decoration: InputDecoration(labelText: 'Cinsiyet'),
@@ -78,7 +78,7 @@ class _StaffPersonalInfoFormState extends State<StaffPersonalInfoForm> {
               controller: mailController,
               onChanged: (newValue) {
                 setState(() {
-                  widget.staff.mail = newValue;
+                  widget.user.mail = newValue;
                 });
               },
               decoration: InputDecoration(labelText: 'E-posta'),
@@ -87,7 +87,7 @@ class _StaffPersonalInfoFormState extends State<StaffPersonalInfoForm> {
               controller: nameController,
               onChanged: (newValue) {
                 setState(() {
-                  widget.staff.name = newValue;
+                  widget.user.name = newValue;
                 });
               },
               decoration: InputDecoration(labelText: 'İsim'),
@@ -96,7 +96,7 @@ class _StaffPersonalInfoFormState extends State<StaffPersonalInfoForm> {
               controller: passwordController,
               onChanged: (newValue) {
                 setState(() {
-                  widget.staff.password = newValue;
+                  widget.user.password = newValue;
                 });
               },
               decoration: InputDecoration(labelText: 'Şifre'),
@@ -105,7 +105,7 @@ class _StaffPersonalInfoFormState extends State<StaffPersonalInfoForm> {
               controller: phoneNumberController,
               onChanged: (newValue) {
                 setState(() {
-                  widget.staff.phoneNumber = newValue;
+                  widget.user.phoneNumber = newValue;
                 });
               },
               decoration: InputDecoration(labelText: 'Telefon Numarası'),
@@ -114,18 +114,15 @@ class _StaffPersonalInfoFormState extends State<StaffPersonalInfoForm> {
               controller: surnameController,
               onChanged: (newValue) {
                 setState(() {
-                  widget.staff.surname = newValue;
+                  widget.user.surname = newValue;
                 });
               },
               decoration: InputDecoration(labelText: 'Soyisim'),
             ),
             SizedBox(height: 20),
             ElevatedButton(
-              onPressed: () {
-                
-                  updateUserData(widget.staff);
-                
-                
+              onPressed: () {               
+                  updateUserData(widget.user);
               },
               child: Text('Bilgileri Güncelle'),
             ),

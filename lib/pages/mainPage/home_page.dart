@@ -1,6 +1,5 @@
 import 'package:e_blood_donor/const/button_consts.dart';
 import 'package:e_blood_donor/const/color_const.dart';
-import 'package:e_blood_donor/pages/adminPage/admin_home_page.dart';
 import 'package:e_blood_donor/pages/donorPage/donor_home_page.dart';
 import 'package:e_blood_donor/pages/donorPage/donor_register_page.dart';
 import 'package:e_blood_donor/pages/generalAdminPage/generaladmin_home_page.dart';
