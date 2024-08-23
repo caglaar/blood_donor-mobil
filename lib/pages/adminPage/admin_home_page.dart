@@ -8,22 +8,20 @@ import 'package:e_blood_donor/widgets/adminWidgets/admin_bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../models/hospital_models/hospital_model.dart';
 
 class AdminHomePage extends StatefulWidget {
-  const AdminHomePage({Key? key, required this.admin, required this.hospital, required this.staff}) : super(key: key);
+  const AdminHomePage({Key? key, required this.admin}) : super(key: key);
   final AdminModel admin;
-  final HospitalModel hospital;
-  final StaffModel staff;
 
   @override
   State<AdminHomePage> createState() => _AdminHomePageState();
 }
 
 class _AdminHomePageState extends State<AdminHomePage> {
+  var staff = StaffModel.getEmptyClass();
   late Set<StatelessWidget> pages = {
-    AddStaffPage(staff: widget.staff, admin: widget.admin,),
-    AdminInfoPage(admin: widget.admin, hospital: widget.hospital,),
+    AddStaffPage(staff: staff, admin: widget.admin,),
+    AdminInfoPage(admin: widget.admin),
     UpdateStockPage(admin: widget.admin),
   };
   @override

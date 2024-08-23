@@ -74,13 +74,13 @@ class AdminLoginPage extends StatelessWidget {
                                   );
                             }
                             if(adminLoginProvider.admin.mail == "admin@gmail.com" && adminLoginProvider.admin.password == "adminn")
-                              {
-                                Navigator.of(context).pushReplacement(
-                                  MaterialPageRoute(
-                                    builder: (context) => GeneralAdminHomePage(),
-                                  ),
-                                );
-                              }
+                            {
+                              Navigator.of(context).pushReplacement(
+                                MaterialPageRoute(
+                                  builder: (context) => GeneralAdminHomePage(),
+                                ),
+                              );
+                            }
                             else {
                               print("DEVAMKEEE");
                               bool isLoggedIn = await adminLoginProvider
@@ -92,10 +92,7 @@ class AdminLoginPage extends StatelessWidget {
                                   MaterialPageRoute(
                                     builder: (context) =>
                                         AdminHomePage(
-                                          admin: adminLoginProvider.admin,
-                                          staff: adminLoginProvider.staff,
-                                          hospital: adminLoginProvider
-                                              .hospital),
+                                            admin: adminLoginProvider.admin),
                                   ),
                                 );
                               }

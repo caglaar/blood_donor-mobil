@@ -1,12 +1,10 @@
 import 'package:e_blood_donor/const/color_const.dart';
 import 'package:e_blood_donor/models/users_models/admin_model.dart';
-import 'package:e_blood_donor/models/hospital_models/hospital_model.dart';
 import 'package:flutter/material.dart';
 
 class AdminInfoPage extends StatelessWidget {
-  AdminInfoPage({Key? key, required this.admin, required this.hospital}) : super(key: key);
+  AdminInfoPage({Key? key, required this.admin}) : super(key: key);
   final AdminModel admin;
-  final HospitalModel hospital;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,7 +36,7 @@ class AdminInfoPage extends StatelessWidget {
               _buildInfoRow("Birth Date", admin.birthDate),
               _buildInfoRow("Phone Number", admin.phoneNumber),
               _buildInfoRow("Gender", admin.gender),
-              _buildInfoRow("Hospital Name", hospital.name),
+              _buildInfoRow("Hospital Id", admin.hospitalId),
             ],
           ),
         ),
