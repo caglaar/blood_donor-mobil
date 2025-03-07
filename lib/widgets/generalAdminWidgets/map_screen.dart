@@ -1,13 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:e_blood_donor/providers/hospitalProvider/hospital_location_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
-import 'package:e_blood_donor/providers/hospitalProvider/hospital_location_provider.dart';
+
 import '../../functions/generating_functions.dart';
 
 class HospitalMapScreen extends StatelessWidget {
   final TextEditingController _searchController = TextEditingController();
-  final String _apiKey = 'AIzaSyAiLnhXktavb1xDQOEoxyiTGE5Uc2TFhrU';
 
   HospitalMapScreen({super.key});
 
@@ -30,7 +30,9 @@ class HospitalMapScreen extends StatelessWidget {
                   onPressed: () {
                     final query = _searchController.text;
                     if (query.isNotEmpty) {
-                      context.read<HospitalLocationProvider>().searchLocation(query, _apiKey);
+                      context
+                          .read<HospitalLocationProvider>()
+                          .searchLocation(query, _apiKey);
                     }
                   },
                 ),
@@ -62,10 +64,13 @@ class HospitalMapScreen extends StatelessWidget {
             builder: (context, locationProvider, child) {
               return ElevatedButton(
                 onPressed: () {
-                  locationProvider.hospital.hospitalId = GeneratingFunctions.generateRandomId();
-                  locationProvider.hospital.name=locationProvider.name;
+                  locationProvider.hospital.hospitalId =
+                      GeneratingFunctions.generateRandomId();
+                  locationProvider.hospital.name = locationProvider.name;
                   locationProvider.hospital.address = locationProvider.address;
-                  locationProvider.hospital.geoPoint = GeoPoint(locationProvider.center.latitude,locationProvider.center.longitude);
+                  locationProvider.hospital.geoPoint = GeoPoint(
+                      locationProvider.center.latitude,
+                      locationProvider.center.longitude);
                   locationProvider.addHospital();
                 },
                 child: const Text(

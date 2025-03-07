@@ -3,12 +3,11 @@ import 'package:e_blood_donor/const/color_const.dart';
 import 'package:e_blood_donor/pages/adminPage/admin_home_page.dart';
 import 'package:e_blood_donor/pages/generalAdminPage/generaladmin_home_page.dart';
 import 'package:e_blood_donor/providers/adminProvider/login_provider.dart';
-import 'package:flutter/material.dart';
 import 'package:e_blood_donor/widgets/homeWidgets/form_register.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:provider/provider.dart';
-
 
 class AdminLoginPage extends StatelessWidget {
   const AdminLoginPage({Key? key}) : super(key: key);
@@ -61,57 +60,56 @@ class AdminLoginPage extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 16.0),
                         child: ElevatedButton(
-                          onPressed: () async{
+                          onPressed: () async {
                             if (adminLoginProvider.formKey.currentState!
                                 .saveAndValidate()) {
                               adminLoginProvider.formKey.currentState!.save();
                               adminLoginProvider.admin =
                                   adminLoginProvider.admin.copyWith(
-                                    mail: adminLoginProvider
-                                        .formKey.currentState!.value['mail'],
-                                    password: adminLoginProvider
-                                        .formKey.currentState!.value['password'],
-                                  );
-                            }
-                            if(adminLoginProvider.admin.mail == "admin@gmail.com" && adminLoginProvider.admin.password == "adminn")
-                            {
-                              Navigator.of(context).pushReplacement(
-                                MaterialPageRoute(
-                                  builder: (context) => GeneralAdminHomePage(),
-                                ),
+                                mail: adminLoginProvider
+                                    .formKey.currentState!.value['mail'],
+                                password: adminLoginProvider
+                                    .formKey.currentState!.value['password'],
                               );
                             }
-                            else {
-                              print("DEVAMKEEE");
-                              bool isLoggedIn = await adminLoginProvider
-                                  .signInAdmin();
+                            if (adminLoginProvider.admin.mail ==
+                                    "admin@gmail.com" &&
+                                adminLoginProvider.admin.password == "adminn") {
+                              Navigator.of(context).pushReplacement(
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      const GeneralAdminHomePage(),
+                                ),
+                              );
+                            } else {
+                              bool isLoggedIn =
+                                  await adminLoginProvider.signInAdmin();
 
                               if (isLoggedIn) {
                                 // Kullanıcı doğru kimlik doğrulaması yaptı, yeni sayfaya yönlendir
                                 Navigator.of(context).pushReplacement(
                                   MaterialPageRoute(
-                                    builder: (context) =>
-                                        AdminHomePage(
-                                            admin: adminLoginProvider.admin),
+                                    builder: (context) => AdminHomePage(
+                                        admin: adminLoginProvider.admin),
                                   ),
                                 );
-                              }
-
-                              else {
+                              } else {
                                 // Kullanıcı doğrulama başarısız oldu, hata mesajı göster
                                 ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                    content: Text(
-                                        'Kimlik doğrulaması başarısız!'),
+                                  const SnackBar(
+                                    content:
+                                        Text('Kimlik doğrulaması başarısız!'),
                                     duration: Duration(seconds: 2),
                                   ),
                                 );
                               }
                             }
                           },
-
-                          child: Text("Login",style: TextStyle(color: Colors.black),),
                           style: ButtonStyles.buttonType,
+                          child: const Text(
+                            "Login",
+                            style: TextStyle(color: Colors.black),
+                          ),
                         ),
                       ),
                     ],

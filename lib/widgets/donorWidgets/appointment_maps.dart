@@ -1,9 +1,10 @@
 import 'dart:convert';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_blood_donor/providers/donorProvider/donor_take_appoint_provider.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
+import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
@@ -12,7 +13,8 @@ class MapScreen extends StatefulWidget {
   final GeoPoint startPoint;
   final GeoPoint endPoint;
 
-  MapScreen({Key? key, required this.startPoint, required this.endPoint}) : super(key: key);
+  const MapScreen({Key? key, required this.startPoint, required this.endPoint})
+      : super(key: key);
 
   @override
   _MapScreenState createState() => _MapScreenState();
@@ -20,8 +22,8 @@ class MapScreen extends StatefulWidget {
 
 class _MapScreenState extends State<MapScreen> {
   GoogleMapController? mapController;
-  Set<Marker> _markers = {};
-  Set<Polyline> _polylines = {};
+  final Set<Marker> _markers = {};
+  final Set<Polyline> _polylines = {};
 
   @override
   void initState() {
@@ -31,8 +33,10 @@ class _MapScreenState extends State<MapScreen> {
   }
 
   void _loadMarkers() {
-    _addMarker(widget.startPoint.latitude, widget.startPoint.longitude, 'Start Point');
-    _addMarker(widget.endPoint.latitude, widget.endPoint.longitude, 'End Point');
+    _addMarker(
+        widget.startPoint.latitude, widget.startPoint.longitude, 'Start Point');
+    _addMarker(
+        widget.endPoint.latitude, widget.endPoint.longitude, 'End Point');
   }
 
   void _addMarker(double lat, double lng, String markerId) {
@@ -55,12 +59,20 @@ class _MapScreenState extends State<MapScreen> {
     if (mapController == null) return;
     LatLngBounds bounds = LatLngBounds(
       southwest: LatLng(
-        widget.startPoint.latitude < widget.endPoint.latitude ? widget.startPoint.latitude : widget.endPoint.latitude,
-        widget.startPoint.longitude < widget.endPoint.longitude ? widget.startPoint.longitude : widget.endPoint.longitude,
+        widget.startPoint.latitude < widget.endPoint.latitude
+            ? widget.startPoint.latitude
+            : widget.endPoint.latitude,
+        widget.startPoint.longitude < widget.endPoint.longitude
+            ? widget.startPoint.longitude
+            : widget.endPoint.longitude,
       ),
       northeast: LatLng(
-        widget.startPoint.latitude > widget.endPoint.latitude ? widget.startPoint.latitude : widget.endPoint.latitude,
-        widget.startPoint.longitude > widget.endPoint.longitude ? widget.startPoint.longitude : widget.endPoint.longitude,
+        widget.startPoint.latitude > widget.endPoint.latitude
+            ? widget.startPoint.latitude
+            : widget.endPoint.latitude,
+        widget.startPoint.longitude > widget.endPoint.longitude
+            ? widget.startPoint.longitude
+            : widget.endPoint.longitude,
       ),
     );
     CameraUpdate update = CameraUpdate.newLatLngBounds(bounds, 50);
@@ -72,7 +84,6 @@ class _MapScreenState extends State<MapScreen> {
   }
 
   void _drawRoute() async {
-    final apiKey = "AIzaSyAiLnhXktavb1xDQOEoxyiTGE5Uc2TFhrU";
     final url = Uri.parse(
         'https://maps.googleapis.com/maps/api/directions/json?origin=${widget.startPoint.latitude},${widget.startPoint.longitude}&destination=${widget.endPoint.latitude},${widget.endPoint.longitude}&mode=driving&key=$apiKey');
     final response = await http.get(url);
@@ -83,7 +94,7 @@ class _MapScreenState extends State<MapScreen> {
           decodedResponse['routes'][0]['overview_polyline']['points']);
 
       _polylines.add(Polyline(
-        polylineId: PolylineId('route'),
+        polylineId: const PolylineId('route'),
         points: routePoints,
         color: Colors.red,
         width: 3,
@@ -132,41 +143,44 @@ class _MapScreenState extends State<MapScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Consumer<DonoTakeAppointmentProvider>(
-        builder: (context, takeAppointmentProvider, child) {
-          return Stack(
-            children: [
-              GoogleMap(
-                onMapCreated: _onMapCreated,
-                gestureRecognizers: <Factory<OneSequenceGestureRecognizer>>{
-                  Factory<OneSequenceGestureRecognizer>(()=> EagerGestureRecognizer(),)
-                },
-                initialCameraPosition: CameraPosition(
-                  target: LatLng(widget.startPoint.latitude, widget.startPoint.longitude),
-                  zoom: 11.0,
-                ),
-                markers: _markers,
-                polylines: _polylines,
+          builder: (context, takeAppointmentProvider, child) {
+        return Stack(
+          children: [
+            GoogleMap(
+              onMapCreated: _onMapCreated,
+              gestureRecognizers: <Factory<OneSequenceGestureRecognizer>>{
+                Factory<OneSequenceGestureRecognizer>(
+                  () => EagerGestureRecognizer(),
+                )
+              },
+              initialCameraPosition: CameraPosition(
+                target: LatLng(
+                    widget.startPoint.latitude, widget.startPoint.longitude),
+                zoom: 11.0,
               ),
-              Positioned(
-                left: 16,
-                bottom: 16,
-                child: FloatingActionButton(
-                  onPressed: _zoomOut,
-                  child: Icon(Icons.zoom_out),
-                ),
+              markers: _markers,
+              polylines: _polylines,
+            ),
+            Positioned(
+              left: 16,
+              bottom: 16,
+              child: FloatingActionButton(
+                onPressed: _zoomOut,
+                child: const Icon(Icons.zoom_out),
               ),
-              Positioned(
-                bottom: 16.0, // Bottom'dan uzaklık
-                right: MediaQuery.of(context).size.width / 2 - 28, // Sağdan uzaklık
-                child: FloatingActionButton(
-                  onPressed: () => takeAppointmentProvider.finishAppointment(),
-                  child: Text("Finish"),
-                ),
+            ),
+            Positioned(
+              bottom: 16.0, // Bottom'dan uzaklık
+              right:
+                  MediaQuery.of(context).size.width / 2 - 28, // Sağdan uzaklık
+              child: FloatingActionButton(
+                onPressed: () => takeAppointmentProvider.finishAppointment(),
+                child: const Text("Finish"),
               ),
-            ],
-          );
-        }
-      ),
+            ),
+          ],
+        );
+      }),
     );
   }
 }

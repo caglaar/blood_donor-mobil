@@ -9,7 +9,6 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:provider/provider.dart';
 
-
 class DonorLoginPage extends StatelessWidget {
   const DonorLoginPage({Key? key}) : super(key: key);
 
@@ -44,10 +43,10 @@ class DonorLoginPage extends StatelessWidget {
                         initialValue: donorLoginProvider.donor.mail,
                         keyValue: 'mail',
                         hintText: 'Mail',
-                         validator: FormBuilderValidators.compose([
+                        validator: FormBuilderValidators.compose([
                           FormBuilderValidators.required(),
                           FormBuilderValidators.email(),
-                        ]), 
+                        ]),
                       ),
                       const SizedBox(
                         height: 4,
@@ -61,7 +60,7 @@ class DonorLoginPage extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 16.0),
                         child: ElevatedButton(
-                          onPressed: () async{
+                          onPressed: () async {
                             if (donorLoginProvider.formKey.currentState!
                                 .saveAndValidate()) {
                               donorLoginProvider.formKey.currentState!.save();
@@ -73,40 +72,49 @@ class DonorLoginPage extends StatelessWidget {
                                     .formKey.currentState!.value['password'],
                               );
                             }
-                            bool isLoggedIn = await donorLoginProvider.signInDonor();
+                            bool isLoggedIn =
+                                await donorLoginProvider.signInDonor();
                             if (isLoggedIn) {
                               // Kullanıcı doğru kimlik doğrulaması yaptı, yeni sayfaya yönlendir
                               Navigator.of(context).pushReplacement(
                                 MaterialPageRoute(
-                                  builder: (context) => DonorHomePage(donor: donorLoginProvider.donor),
+                                  builder: (context) => DonorHomePage(
+                                      donor: donorLoginProvider.donor),
                                 ),
                               );
                             } else {
                               // Kullanıcı doğrulama başarısız oldu, hata mesajı göster
                               ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                  content: Text('Kimlik doğrulaması başarısız!'),
+                                const SnackBar(
+                                  content:
+                                      Text('Kimlik doğrulaması başarısız!'),
                                   duration: Duration(seconds: 2),
                                 ),
                               );
                             }
-
                           },
-                          child: Text("Login",style: TextStyle(color: Colors.black),),
                           style: ButtonStyles.buttonType,
+                          child: const Text(
+                            "Login",
+                            style: TextStyle(color: Colors.black),
+                          ),
                         ),
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 16.0),
-                        child: ElevatedButton(onPressed: (){
-                          Navigator.of(context).pushReplacement(
-                                MaterialPageRoute(
-                                  builder: (context) => DonorRegisterPage(),
-                                ),
-                          );
-                        }, 
-                        child: Text("Register",style: TextStyle(color: Colors.black),),
-                        style: ButtonStyles.buttonType,
+                        child: ElevatedButton(
+                          onPressed: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => const DonorRegisterPage(),
+                              ),
+                            );
+                          },
+                          style: ButtonStyles.buttonType,
+                          child: const Text(
+                            "Register",
+                            style: TextStyle(color: Colors.black),
+                          ),
                         ),
                       )
                     ],
